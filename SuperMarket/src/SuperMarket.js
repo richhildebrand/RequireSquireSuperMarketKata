@@ -2,8 +2,8 @@ define([],
 function() {
 	'use strict';
 
-	var SuperMarket = function() {
-		return '$5';
+	var SuperMarket = function(loafsOfBread) {
+		return loafsOfBread;
 	};
 
 	return SuperMarket;
