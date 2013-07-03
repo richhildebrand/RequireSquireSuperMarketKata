@@ -30,5 +30,13 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
+		//OH NO! How do we know the difference between bread and noodles?! REFACTOR :)
+		describe('When noodles cost $0.50 per batch, the super market', function() {
+			it('should charge me $1 for two noodles', function() {
+				var costOfNoodles = _superMarket(2);
+
+				expect(costOfNoodles).to.be.equal("$1");
+			});
+		});
 	});
 });
