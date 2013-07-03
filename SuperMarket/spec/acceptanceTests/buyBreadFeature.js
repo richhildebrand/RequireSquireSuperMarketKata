@@ -20,13 +20,13 @@ define(['Squire'], function(Squire) {
 			it('should charge me $5 for five loafs of bread', function() {
 				var costOfBread = _superMarket(5);
 
-				expect(costOfBread).to.be.equal(5);
+				expect(costOfBread).to.be.equal("$5");
 			});
 
 			it('should charge me $10 for ten loafs of bread', function() {
 				var costOfBread = _superMarket(10);
 
-				expect(costOfBread).to.be.equal(10);
+				expect(costOfBread).to.be.equal("$10");
 			});
 		});
 
