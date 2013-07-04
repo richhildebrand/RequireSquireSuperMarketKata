@@ -26,6 +26,14 @@ define(['Squire'], function(Squire) {
 
 				expect(costOfNoodles).to.be.equal("$1");
 			})
+
+			it('should change me $3.50 for seven noodles', function() {
+				_order['noodles'] = 7;
+
+				var costOfNoodles = _superMarket(_order);
+
+				expect(costOfNoodles).to.be.equal("$3.50");
+			});
 		});
 	});
 });
