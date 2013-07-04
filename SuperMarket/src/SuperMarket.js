@@ -4,19 +4,19 @@ function() {
 
 	var SuperMarket = function(itemsToBuy) {
 		var price = '$';
-		var zero = '0';
-		var complete = '';
+		var zeroToAppendForDecimals = '0';
+		var completeSentence = '';
 
 		if (itemsToBuy['loafsOfBread'])
 		{
 			return price + itemsToBuy['loafsOfBread'] 
 		}
-		complete = price + itemsToBuy['noodles'] * .5;
-		if (complete.toString().indexOf(".") != -1)
+		completeSentence = price + itemsToBuy['noodles'] * .5;
+		if (completeSentence.indexOf(".") != -1)
 		{
-			return complete + zero;
+			return completeSentence + zeroToAppendForDecimals;
 		}
-		return complete;
+		return completeSentence;
 	};
 
 	return SuperMarket;
