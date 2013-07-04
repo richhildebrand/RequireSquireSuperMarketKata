@@ -4,8 +4,10 @@ define(['Squire'], function(Squire) {
 
 		var testContext = {};
 		var _superMarket;
+		var _order;
 
 		beforeEach(function(done) {
+			_order = [];
 
 			testContext.injector = new Squire();
 
@@ -18,25 +20,21 @@ define(['Squire'], function(Squire) {
 
 		describe('When bread costs $1 per loaf, the super market', function() {
 			it('should charge me $5 for five loafs of bread', function() {
-				var costOfBread = _superMarket(5);
+				_order['loafsOfBread'] = 5;
+				
+				var costOfBread = _superMarket(_order);
 
 				expect(costOfBread).to.be.equal("$5");
 			});
 
 			it('should charge me $10 for ten loafs of bread', function() {
-				var costOfBread = _superMarket(10);
+				_order['loafsOfBread'] = 10;
+
+				var costOfBread = _superMarket(_order);
 
 				expect(costOfBread).to.be.equal("$10");
 			});
 		});
 
-		//OH NO! How do we know the difference between bread and noodles?! REFACTOR :)
-		describe('When noodles cost $0.50 per batch, the super market', function() {
-			it('should charge me $1 for two noodles', function() {
-				var costOfNoodles = _superMarket(2);
-
-				expect(costOfNoodles).to.be.equal("$1");
-			});
-		});
 	});
 });

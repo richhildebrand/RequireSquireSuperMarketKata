@@ -2,10 +2,14 @@ define([],
 function() {
 	'use strict';
 
-	var SuperMarket = function(loafsOfBread) {
-		if (loafsOfBread < 5) { return '$1' }
-		return "$" + loafsOfBread.toString();
+	var SuperMarket = function(itemsToBuy) {
+		var price = '$';
 
+		if (itemsToBuy['loafsOfBread'])
+		{
+			return price + itemsToBuy['loafsOfBread'] 
+		}
+		return price + itemsToBuy['noodles'] * .5;
 	};
 
 	return SuperMarket;
