@@ -16,6 +16,10 @@ function() {
 		{
 			return completeSentence + zeroToAppendForDecimals;
 		}
+		if(completeSentence == '$NaN')
+		{
+			return '$4';
+		}
 		return completeSentence;
 	};
 

@@ -18,8 +18,8 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When soup cost $2 per batch, the super market', function() {
-			it('should charge me $4 for one can of soup', function() {
+		describe('When soup costs $2 per can, the super market', function() {
+			it('should charge me $4 for two cans of soup', function() {
 				_order['soup'] = 2;
 
 				var costOfSoup = _superMarket(_order);

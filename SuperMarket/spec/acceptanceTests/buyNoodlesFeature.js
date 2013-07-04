@@ -1,5 +1,5 @@
 define(['Squire'], function(Squire) {
-	describe('Given I am buying bread', function() {
+	describe('Given I am buying noodles', function() {
 	'use strict';
 
 		var testContext = {};
