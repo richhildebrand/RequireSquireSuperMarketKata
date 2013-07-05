@@ -5,9 +5,11 @@ define(['Squire'], function(Squire) {
 		var testContext = {};
 		var _superMarket;
 		var _order;
+		var _orderResult
 
 		beforeEach(function(done) {
 			_order = [];
+			_orderResult = { totalPrice: 0, receipt: "" };
 
 			testContext.injector = new Squire();
 
@@ -22,7 +24,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
 				
-				var costOfBread = _superMarket.buyBread(_order);
+				var costOfBread = _superMarket.buyBread(_order, _orderResult).totalPrice;
 
 				expect(costOfBread).to.be.equal(5);
 			});
@@ -30,7 +32,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 10 for ten loafs of bread', function() {
 				_order['loafsOfBread'] = 10;
 
-				var costOfBread = _superMarket.buyBread(_order);
+				var costOfBread = _superMarket.buyBread(_order, _orderResult).totalPrice;
 
 				expect(costOfBread).to.be.equal(10);
 			});

@@ -2,9 +2,12 @@ define([],
 function() {
 	'use strict';
 
-	var buyBread = function(itemsToBuy) {
+	var buyBread = function(itemsToBuy, orderResult) {
 		var quantity = itemsToBuy['loafsOfBread'];
-		return (quantity) ? quantity : 0;
+		var costOfItem = (quantity) ? quantity : 0;
+		orderResult.totalPrice += costOfItem 
+		orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + formatPrice(costOfItem ) : "";
+		return orderResult;
 	};
 
 	var buyNoodles = function(itemsToBuy) {
@@ -28,13 +31,15 @@ function() {
 	}
 
 	var SuperMarket = function(itemsToBuy) {
-		var zeroToAppendForDecimals = '0';
-		var totalPrice = 0;
+		var orderResult = { totalPrice: 0, receipt: ""};
 
-		totalPrice = buyBread(itemsToBuy);
-		totalPrice += buyNoodles(itemsToBuy); 
-		totalPrice += buySoup(itemsToBuy);
-		return formatPrice(totalPrice);
+		orderResult = buyBread(itemsToBuy, orderResult);
+		orderResult.totalPrice += buyNoodles(itemsToBuy); 
+		orderResult.totalPrice += buySoup(itemsToBuy);
+
+		orderResult.totalPrice = (formatPrice(orderResult.totalPrice));
+
+		return orderResult;
 	};
 
 	return {
