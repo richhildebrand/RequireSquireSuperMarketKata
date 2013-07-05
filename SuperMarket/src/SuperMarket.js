@@ -3,15 +3,18 @@ function() {
 	'use strict';
 
 	var buyBread = function(itemsToBuy) {
-		return itemsToBuy['loafsOfBread'];
+		var quantity = itemsToBuy['loafsOfBread'];
+		return (quantity) ? quantity : 0;
 	};
 
 	var buyNoodles = function(itemsToBuy) {
-		return itemsToBuy['noodles'] * .5;
+		var quantity = itemsToBuy['noodles'];
+		return (quantity) ? quantity * .5 : 0;
 	};
 
 	var buySoup = function(itemsToBuy) {
-		return itemsToBuy['cansOfSoup'] * 2;
+		var quantity = itemsToBuy['cansOfSoup'];
+		return (quantity) ? quantity * 2 : 0;
 	};
 
 	var formatPrice = function(price) {
@@ -23,18 +26,9 @@ function() {
 		var zeroToAppendForDecimals = '0';
 		var totalPrice = 0;
 
-		if (itemsToBuy['loafsOfBread'])
-		{
-			totalPrice = buyBread(itemsToBuy);
-		}
-		if (itemsToBuy['noodles'])
-		{
-			totalPrice += buyNoodles(itemsToBuy); 
-		}
-		if (itemsToBuy['cansOfSoup'])
-		{
-			totalPrice += buySoup(itemsToBuy);
-		}
+		totalPrice = buyBread(itemsToBuy);
+		totalPrice += buyNoodles(itemsToBuy); 
+		totalPrice += buySoup(itemsToBuy);
 		return formatPrice(totalPrice);
 	};
 
