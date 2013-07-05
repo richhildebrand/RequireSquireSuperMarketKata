@@ -18,9 +18,14 @@ function() {
 	};
 
 	var formatPrice = function(price) {
-		var formattedPrice = '$' + price;
-		return ((formattedPrice.indexOf(".") != -1)) ? formattedPrice + '0' : formattedPrice;
+		price = '$' + price;
+		return _needsZero(price) ? price + '0' : price;
 	};
+
+	// Brendan would love this method name!
+	var _needsZero = function(price) {
+		return (price.indexOf(".") != -1)
+	}
 
 	var SuperMarket = function(itemsToBuy) {
 		var zeroToAppendForDecimals = '0';
