@@ -27,7 +27,7 @@ define(['Squire'], function(Squire) {
 				expect(costOfNoodles).to.be.equal(1);
 			})
 
-			it('should change me 3.50 for seven noodles', function() {
+			it('should charge me 3.50 for seven noodles', function() {
 				_order['noodles'] = 7;
 
 				var costOfNoodles = _superMarket.buyNoodles(_order);
