@@ -32,7 +32,7 @@ define(['Squire'],
 				var total = _superMarket.SuperMarket(_order);
 
 				expect(total.receipt).to.contain("loafsOfBread: $3");
-				expect(total.receipt).to.contains("noodles: $1");
+				expect(total.receipt).to.contain("noodles: $1");
 			});
 		});
 	});

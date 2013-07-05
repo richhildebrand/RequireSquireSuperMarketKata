@@ -24,17 +24,23 @@ define(['Squire'], function(Squire) {
 			it('should charge me 5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
 				
-				var costOfBread = _superMarket.buyBread(_order, _orderResult).totalPrice;
+				var orderResult = _superMarket.buyBread(_order, _orderResult);
+				var costOfBread = orderResult.totalPrice;
+				var receipt = orderResult.receipt;
 
 				expect(costOfBread).to.be.equal(5);
+				expect(receipt).to.be.equal('loafsOfBread: $5');
 			});
 
 			it('should charge me 10 for ten loafs of bread', function() {
 				_order['loafsOfBread'] = 10;
 
-				var costOfBread = _superMarket.buyBread(_order, _orderResult).totalPrice;
+				var orderResult = _superMarket.buyBread(_order, _orderResult);
+				var costOfBread = orderResult.totalPrice;
+				var receipt = orderResult.receipt;
 
 				expect(costOfBread).to.be.equal(10);
+				expect(receipt).to.be.equal('loafsOfBread: $10');
 			});
 		});
 
