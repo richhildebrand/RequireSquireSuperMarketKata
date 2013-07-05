@@ -25,7 +25,6 @@ function(Squire) {
 				_order['loafsOfBread'] = 4;
 
 				var cost = _superMarket.SuperMarket(_order);
-
 				expect(cost).to.be.equal('$6.50');
 			});
 		});

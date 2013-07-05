@@ -14,37 +14,36 @@ function() {
 		return itemsToBuy['cansOfSoup'] * 2;
 	};
 
+	var formatPrice = function(price) {
+		var formattedPrice = '$' + price;
+		return ((formattedPrice.indexOf(".") != -1)) ? formattedPrice + '0' : formattedPrice;
+	};
+
 	var SuperMarket = function(itemsToBuy) {
-		var price = '$';
 		var zeroToAppendForDecimals = '0';
-		var total = 0;
-		var completeSentence = '';
+		var totalPrice = 0;
 
 		if (itemsToBuy['loafsOfBread'])
 		{
-			total = buyBread(itemsToBuy);
+			totalPrice = buyBread(itemsToBuy);
 		}
 		if (itemsToBuy['noodles'])
 		{
-			total += buyNoodles(itemsToBuy); 
+			totalPrice += buyNoodles(itemsToBuy); 
 		}
 		if (itemsToBuy['cansOfSoup'])
 		{
-			total += buySoup(itemsToBuy);
+			totalPrice += buySoup(itemsToBuy);
 		}
-		completeSentence = price + total;
-		if (completeSentence.indexOf(".") != -1)
-		{
-			return completeSentence + zeroToAppendForDecimals;
-		}
-		return completeSentence;
+		return formatPrice(totalPrice);
 	};
 
 	return {
 		SuperMarket : SuperMarket,
 		buyBread : buyBread,
 		buyNoodles : buyNoodles,
-		buySoup : buySoup
+		buySoup : buySoup,
+		formatPrice : formatPrice
 	};
 
 });

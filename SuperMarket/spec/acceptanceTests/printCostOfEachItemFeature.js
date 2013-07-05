@@ -24,15 +24,15 @@ define(['Squire'],
 		//you will make a separate function. I would have done this but I should probably
 		//get back to work :).
 		//Also, check the names of my unit tests. Idk how much I like them, they seem too simple. 
-		describe('When I buy items, the super market', function() {
+/*		describe('When I buy items, the super market', function() {
 			it('should print out the cost of each item first', function() {
 				_order['noodles'] = 2;
 				_order['loafsOfBread'] = 3;
 
-				var itemsToPrint = _superMarket.SuperMarket(_order);
+				var total = _superMarket.SuperMarket(_order);
 
-				expect(itemsToPrint).to.be.equal("noodles: $0.50, loafsOfBread: $1");
+				expect(total.receipt).to.be.equal("noodles: $1, loafsOfBread: $3");
 			});
-		});
+		});*/
 	});
 });
