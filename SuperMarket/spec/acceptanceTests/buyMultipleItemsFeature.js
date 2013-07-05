@@ -29,5 +29,17 @@ function(Squire) {
 				expect(cost).to.be.equal('$6.50');
 			});
 		});
+
+		describe('When noodles cost 50 cents, bread costs $1 per loaf, and soup cost $2 per can, the super market', function() {
+			it('should charge me $10.50 for 5 noodles, 4 loafs of bread and 2 cans of soup', function() {
+				_order['noodles'] = 5;
+				_order['loafsOfBread'] = 4;
+				_order['cansOfSoup'] = 2;
+
+				var cost = _superMarket.SuperMarket(_order);
+
+				expect(cost).to.be.equal('$10.50');
+			});
+		});
 	});
 });
