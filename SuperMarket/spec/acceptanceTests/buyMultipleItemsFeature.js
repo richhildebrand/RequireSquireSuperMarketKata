@@ -2,7 +2,7 @@ define(['Squire'],
 function(Squire) {
 	'use strict';
 
-	describe('Given I am buying multiple items', function() {
+	describe('Feature - Given I am buying multiple items', function() {
 		var _order;
 		var _superMarket;
 		var testContext = {};

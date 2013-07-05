@@ -1,5 +1,5 @@
 define(['Squire'], function(Squire) {
-	describe('Feature - Given I am buying noodles', function() {
+	describe('Unit Test - buyNoodles function', function() {
 	'use strict';
 
 		var testContext = {};
@@ -18,21 +18,21 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When noodles cost $0.50 per batch, the super market', function() {
-			it('should charge me $1 for two noodles', function() {
+		describe('When noodles cost 0.5 per batch, the super market', function() {
+			it('should charge me 1 for two noodles', function() {
 				_order['noodles'] = 2;
 
-				var costOfNoodles = _superMarket.SuperMarket(_order);
+				var costOfNoodles = _superMarket.buyNoodles(_order);
 
-				expect(costOfNoodles).to.be.equal("$1");
+				expect(costOfNoodles).to.be.equal(1);
 			})
 
-			it('should change me $3.50 for seven noodles', function() {
+			it('should change me 3.50 for seven noodles', function() {
 				_order['noodles'] = 7;
 
-				var costOfNoodles = _superMarket.SuperMarket(_order);
+				var costOfNoodles = _superMarket.buyNoodles(_order);
 
-				expect(costOfNoodles).to.be.equal("$3.50");
+				expect(costOfNoodles).to.be.equal(3.5);
 			});
 		});
 	});
