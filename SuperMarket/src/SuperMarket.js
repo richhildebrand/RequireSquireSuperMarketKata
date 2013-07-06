@@ -10,6 +10,12 @@ function() {
 		return orderResult;
 	};
 
+	// Optional hard mode refactor.
+	// See if you can defeat require js and move our buy functions
+	// to a separate file named something like itemBuyer :)
+
+	// Bonus points if you can do it without duplicating
+	// the formatPrice method!
 	var buyNoodles = function(itemsToBuy) {
 		var quantity = itemsToBuy['noodles'];
 		return (quantity) ? quantity * .5 : 0;
