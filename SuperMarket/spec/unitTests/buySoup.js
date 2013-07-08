@@ -3,7 +3,7 @@ define(['Squire'], function(Squire) {
 	'use strict';
 
 		var testContext = {};
-		var _superMarket;
+		var _itemBuyer;
 		var _order;
 
 		beforeEach(function(done) {
@@ -11,18 +11,18 @@ define(['Squire'], function(Squire) {
 
 			testContext.injector = new Squire();
 
-			testContext.injector.require(['SuperMarket'], function(SuperMarket) {
-				testContext.SuperMarket = SuperMarket;
-				_superMarket = testContext.SuperMarket;
+			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
+				testContext.ItemBuyer = ItemBuyer;
+				_itemBuyer = testContext.ItemBuyer;
 				done();
 			});
 		});
 
-		describe('When soup costs 2 per can, the super market', function() {
+		describe('When soup costs 2 per can, buy soup', function() {
 			it('should charge me 4 for two cans of soup', function() {
 				_order['cansOfSoup'] = 2;
 
-				var costOfSoup = _superMarket.buySoup(_order);
+				var costOfSoup = _itemBuyer.buySoup(_order);
 
 				expect(costOfSoup).to.be.equal(4);
 			})

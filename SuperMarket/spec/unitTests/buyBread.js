@@ -3,7 +3,7 @@ define(['Squire'], function(Squire) {
 	'use strict';
 
 		var testContext = {};
-		var _superMarket;
+		var _itemBuyer;
 		var _order;
 		var _orderResult
 
@@ -13,9 +13,9 @@ define(['Squire'], function(Squire) {
 
 			testContext.injector = new Squire();
 
-			testContext.injector.require(['SuperMarket'], function(SuperMarket) {
-				testContext.SuperMarket = SuperMarket;
-				_superMarket = testContext.SuperMarket;
+			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
+				testContext.ItemBuyer = ItemBuyer;
+				_itemBuyer = testContext.ItemBuyer;
 				done();
 			});
 		});
@@ -24,7 +24,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
 				
-				var orderResult = _superMarket.buyBread(_order, _orderResult);
+				var orderResult = _itemBuyer.buyBread(_order, _orderResult);
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
@@ -35,7 +35,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 10 for ten loafs of bread', function() {
 				_order['loafsOfBread'] = 10;
 
-				var orderResult = _superMarket.buyBread(_order, _orderResult);
+				var orderResult = _itemBuyer.buyBread(_order, _orderResult);
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
