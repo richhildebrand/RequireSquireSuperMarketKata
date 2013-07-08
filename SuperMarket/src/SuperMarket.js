@@ -4,6 +4,9 @@ function(ItemBuyer) {
 
 	var _itemBuyer = ItemBuyer;
 
+	//if possible extract this and _needsZero to a priceFormatter.
+	//if you can't get it we will do it tomorrow since everyone
+	//(including me) is going to feel like being super productive!
 	var formatPrice = function(price) {
 		price = '$' + price;
 		return _needsZero(price) ? price + '0' : price;
