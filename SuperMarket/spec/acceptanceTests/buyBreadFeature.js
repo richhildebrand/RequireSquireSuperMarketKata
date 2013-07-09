@@ -22,7 +22,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me $5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
 				
-				var costOfBread = _superMarket.SuperMarket(_order).totalPrice;
+				var costOfBread = _superMarket(_order).totalPrice;
 
 				expect(costOfBread).to.be.equal("$5").totalPrice;
 			});
@@ -30,7 +30,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me $10 for ten loafs of bread', function() {
 				_order['loafsOfBread'] = 10;
 
-				var costOfBread = _superMarket.SuperMarket(_order).totalPrice;
+				var costOfBread = _superMarket(_order).totalPrice;
 
 				expect(costOfBread).to.be.equal("$10").totalPrice;
 			});

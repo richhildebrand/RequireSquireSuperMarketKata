@@ -24,7 +24,7 @@ function(Squire) {
 				_order['noodles'] = 5;
 				_order['loafsOfBread'] = 4;
 
-				var cost = _superMarket.SuperMarket(_order).totalPrice;
+				var cost = _superMarket(_order).totalPrice;
 				expect(cost).to.be.equal('$6.50');
 			});
 		});
@@ -35,7 +35,7 @@ function(Squire) {
 				_order['loafsOfBread'] = 4;
 				_order['cansOfSoup'] = 2;
 
-				var cost = _superMarket.SuperMarket(_order).totalPrice;
+				var cost = _superMarket(_order).totalPrice;
 
 				expect(cost).to.be.equal('$10.50');
 			});

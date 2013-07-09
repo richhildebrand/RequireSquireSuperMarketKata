@@ -1,15 +1,13 @@
 define(['PriceFormatter'],
 function(PriceFormatter) {
 
-	var _priceFormatter = PriceFormatter;
-
 	var ItemBuyer = {
 
 		buyBread: function(itemsToBuy, orderResult) {
 			var quantity = itemsToBuy['loafsOfBread'];
 			var costOfItem = (quantity) ? quantity : 0;
 			orderResult.totalPrice += costOfItem 
-			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + _priceFormatter.formatPrice(costOfItem ) : "";
+			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + PriceFormatter.formatPrice(costOfItem ) : "";
 			return orderResult;
 		},
 

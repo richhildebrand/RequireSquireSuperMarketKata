@@ -20,16 +20,12 @@ define(['Squire'],
 			});
 		});
 
-		//I will leave the unit test to be made by you since I'm almost positive that
-		//you will make a separate function. I would have done this but I should probably
-		//get back to work :).
-		//Also, check the names of my unit tests. Idk how much I like them, they seem too simple. 
 		describe('When I buy items, the super market', function() {
 			it('should print out the cost of each item first', function() {
 				_order['noodles'] = 2;
 				_order['loafsOfBread'] = 3;
 
-				var total = _superMarket.SuperMarket(_order);
+				var total = _superMarket(_order);
 
 				expect(total.receipt).to.contain("loafsOfBread: $3");
 				expect(total.receipt).to.contain("noodles: $1");
