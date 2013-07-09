@@ -1,15 +1,7 @@
-define([],
-function() {
+define(['PriceFormatter'],
+function(PriceFormatter) {
 
-	var formatPrice = function(price) {
-		price = '$' + price;
-		return _needsZero(price) ? price + '0' : price;
-	};
-
-	// Brendan would love this method name!
-	var _needsZero = function(price) {
-		return (price.indexOf(".") != -1)
-	}
+	var _priceFormatter = PriceFormatter;
 
 	var ItemBuyer = {
 
@@ -17,7 +9,7 @@ function() {
 			var quantity = itemsToBuy['loafsOfBread'];
 			var costOfItem = (quantity) ? quantity : 0;
 			orderResult.totalPrice += costOfItem 
-			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + formatPrice(costOfItem ) : "";
+			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + _priceFormatter.formatPrice(costOfItem ) : "";
 			return orderResult;
 		},
 
