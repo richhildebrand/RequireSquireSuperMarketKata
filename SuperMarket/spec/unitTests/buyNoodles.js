@@ -24,18 +24,20 @@ define(['Squire'], function(Squire) {
 			it('should charge me 1 for two noodles', function() {
 				_order['noodles'] = 2;
 
-				var orderResult = _itemBuyer.buyNoodles(_order);
+				var orderResult = _itemBuyer.buyNoodles(_order, _orderResult);
 				var costOfNoodles = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
 				expect(costOfNoodles).to.be.equal(1);
 				expect(receipt).to.be.equal('noodles: $1');
-			})
+			});
 
 			it('should charge me 3.50 for seven noodles', function() {
 				_order['noodles'] = 7;
 
-				var costOfNoodles = _itemBuyer.buyNoodles(_order);
+				var orderResult = _itemBuyer.buyNoodles(_order, _orderResult);
+				var costOfNoodles = orderResult.totalPrice;
+				var receipt = orderResult.receipt;
 
 				expect(costOfNoodles).to.be.equal(3.5);
 				expect(receipt).to.be.equal('noodles: $3.50');
