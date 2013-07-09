@@ -1,18 +1,18 @@
 define([], 
 function () {
 	'use strict';
-	
-	var formatPrice = function(price) {
-		price = '$' + price;
-		return _needsZero(price) ? price + '0' : price;
-	};
 
-	var _needsZero = function(price) {
-		return (price.indexOf(".") != -1)
-	};
+	var PriceFormatter = {
 
-	return {
-		formatPrice : formatPrice,
-		_needsZero : _needsZero
+		formatPrice: function(price) {
+			price = '$' + price;
+			return this._needsZero(price) ? price + '0' : price;
+		},
+
+		_needsZero: function(price) {
+			return (price.indexOf(".") != -1)
+		}
 	}
+
+	return PriceFormatter;
 });
