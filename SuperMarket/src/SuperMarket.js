@@ -1,21 +1,9 @@
-define(['ItemBuyer'],
-function(ItemBuyer) {
+define(['ItemBuyer', 'PriceFormatter'],
+function(ItemBuyer, PriceFormatter) {
 	'use strict';
 
 	var _itemBuyer = ItemBuyer;
-
-	//if possible extract this and _needsZero to a priceFormatter.
-	//if you can't get it we will do it tomorrow since everyone
-	//(including me) is going to feel like being super productive!
-	var formatPrice = function(price) {
-		price = '$' + price;
-		return _needsZero(price) ? price + '0' : price;
-	};
-
-	// Brendan would love this method name!
-	var _needsZero = function(price) {
-		return (price.indexOf(".") != -1)
-	}
+	var _priceFormatter = PriceFormatter;
 
 	var SuperMarket = function(itemsToBuy) {
 		var orderResult = { totalPrice: 0, receipt: ""};
@@ -24,14 +12,13 @@ function(ItemBuyer) {
 		orderResult.totalPrice += _itemBuyer.buyNoodles(itemsToBuy); 
 		orderResult.totalPrice += _itemBuyer.buySoup(itemsToBuy);
 
-		orderResult.totalPrice = (formatPrice(orderResult.totalPrice));
+		orderResult.totalPrice = (_priceFormatter.formatPrice(orderResult.totalPrice));
 
 		return orderResult;
 	};
 
 	return {
-		SuperMarket : SuperMarket,
-		formatPrice : formatPrice
+		SuperMarket : SuperMarket
 	};
 
 });
