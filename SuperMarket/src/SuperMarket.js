@@ -6,7 +6,7 @@ function(ItemBuyer, PriceFormatter) {
 		var orderResult = { totalPrice: 0, receipt: ""};
 
 		orderResult = ItemBuyer.buyBread(itemsToBuy, orderResult);
-		orderResult.totalPrice += ItemBuyer.buyNoodles(itemsToBuy); 
+		orderResult = ItemBuyer.buyNoodles(itemsToBuy, orderResult); 
 		orderResult.totalPrice += ItemBuyer.buySoup(itemsToBuy);
 
 		orderResult.totalPrice = (PriceFormatter.formatPrice(orderResult.totalPrice));
