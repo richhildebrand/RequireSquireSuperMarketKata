@@ -7,13 +7,16 @@ function(PriceFormatter) {
 			var quantity = itemsToBuy['loafsOfBread'];
 			var costOfItem = (quantity) ? quantity : 0;
 			orderResult.totalPrice += costOfItem 
-			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + PriceFormatter.formatPrice(costOfItem ) : "";
+			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + PriceFormatter.formatPrice(costOfItem) : "";
 			return orderResult;
 		},
 
-		buyNoodles: function(itemsToBuy) {
+		buyNoodles: function(itemsToBuy, orderResult) {
 			var quantity = itemsToBuy['noodles'];
-			return (quantity) ? quantity * .5 : 0;
+			var costOfItem = (quantity) ? quantity * .5 : 0;
+			orderResult.totalPrice += costOfItem;
+			orderResult.receipt += (costOfItem) ? 'noodles: ' + PriceFormatter.formatPrice(costOfItem) : "";
+			return orderResult;
 		},
 
 		buySoup: function(itemsToBuy) {
