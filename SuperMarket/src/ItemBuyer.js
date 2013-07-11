@@ -19,9 +19,12 @@ function(PriceFormatter) {
 			return orderResult;
 		},
 
-		buySoup: function(itemsToBuy) {
+		buySoup: function(itemsToBuy, orderResult) {
 			var quantity = itemsToBuy['cansOfSoup'];
-			return (quantity) ? quantity * 2 : 0;
+			var costOfItem = (quantity) ? quantity * 2 : 0;
+			orderResult.totalPrice += costOfItem;
+			orderResult.receipt += (costOfItem) ? 'cansOfSoup: ' + PriceFormatter.formatPrice(costOfItem) : "";
+			return orderResult;
 		}
 	}
 

@@ -7,7 +7,7 @@ function(ItemBuyer, PriceFormatter) {
 
 		orderResult = ItemBuyer.buyBread(itemsToBuy, orderResult);
 		orderResult = ItemBuyer.buyNoodles(itemsToBuy, orderResult); 
-		orderResult.totalPrice += ItemBuyer.buySoup(itemsToBuy);
+		orderResult = ItemBuyer.buySoup(itemsToBuy, orderResult);
 
 		orderResult.totalPrice = (PriceFormatter.formatPrice(orderResult.totalPrice));
 
