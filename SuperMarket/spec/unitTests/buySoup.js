@@ -22,6 +22,19 @@ define(['Squire'], function(Squire) {
 			it('should charge me 4 for two cans of soup', function() {
 				_order['cansOfSoup'] = 2;
 
+				var orderResult = _itemBuyer.buySoup(_order);
+				var costOfSoup = orderResult.totalPrice;
+				var receipt = orderResult.receipt
+
+				expect(costOfSoup).to.be.equal(4);
+				expect(receipt).to.be.equal('noodles: $4');
+			})
+		});
+
+		describe('When soup costs 2 per can, buy soup', function() {
+			it('should charge me 4 for two cans of soup', function() {
+				_order['cansOfSoup'] = 2;
+
 				var costOfSoup = _itemBuyer.buySoup(_order);
 
 				expect(costOfSoup).to.be.equal(4);
