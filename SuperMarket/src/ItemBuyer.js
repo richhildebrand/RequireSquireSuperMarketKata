@@ -1,29 +1,28 @@
-define(['PriceFormatter'],
-function(PriceFormatter) {
+define(['PriceFormatter', 'ProductList'],
+function(PriceFormatter, ProductList) {
+	'use strict';
 
 	var ItemBuyer = {
 
 		buyBread: function(itemsToBuy, orderResult) {
-			var quantity = itemsToBuy['loafsOfBread'];
-			var costOfItem = (quantity) ? quantity : 0;
-			orderResult.totalPrice += costOfItem 
-			orderResult.receipt += (costOfItem) ? 'loafsOfBread: ' + PriceFormatter.formatPrice(costOfItem) : "";
-			return orderResult;
+			return this.buyItem(itemsToBuy, orderResult, 'loafsOfBread');
 		},
 
 		buyNoodles: function(itemsToBuy, orderResult) {
-			var quantity = itemsToBuy['noodles'];
-			var costOfItem = (quantity) ? quantity * .5 : 0;
-			orderResult.totalPrice += costOfItem;
-			orderResult.receipt += (costOfItem) ? 'noodles: ' + PriceFormatter.formatPrice(costOfItem) : "";
-			return orderResult;
+			return this.buyItem(itemsToBuy, orderResult, 'noodles');
 		},
 
 		buySoup: function(itemsToBuy, orderResult) {
-			var quantity = itemsToBuy['cansOfSoup'];
-			var costOfItem = (quantity) ? quantity * 2 : 0;
-			orderResult.totalPrice += costOfItem;
-			orderResult.receipt += (costOfItem) ? 'cansOfSoup: ' + PriceFormatter.formatPrice(costOfItem) : "";
+			return this.buyItem(itemsToBuy, orderResult, 'cansOfSoup');
+		},
+
+		buyItem: function(itemsToBuy, orderResult, itemToBuy) {
+			var quantity = itemsToBuy[itemToBuy];
+			var itemPrice = ProductList.getProducts()[itemToBuy];
+
+			var costOfItem = (quantity) ? quantity * itemPrice : 0;
+			orderResult.totalPrice += costOfItem 
+			orderResult.receipt += (costOfItem) ? itemToBuy + ': ' + PriceFormatter.formatPrice(costOfItem) : "";
 			return orderResult;
 		}
 	}
