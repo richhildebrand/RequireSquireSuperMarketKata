@@ -2,6 +2,8 @@ define(['PriceFormatter', 'ProductList'],
 function(PriceFormatter, ProductList) {
 	'use strict';
 
+	var _priceFormatter = PriceFormatter;
+
 	var ItemBuyer = {
 			
 		//TODO: do not pass in orderResult

@@ -30,13 +30,14 @@ define(['Squire'], function(Squire) {
 
 				expect(costOfNoodles).to.be.equal(1);
 				expect(receipt).to.be.equal('noodles: $1');
-			})
+			});
 
 			it('should charge me 3.50 for seven noodles', function() {
 				_order['noodles'] = 7;
 
 				var orderResult = _itemBuyer.buyNoodles(_order, _orderResult);
 				var costOfNoodles = orderResult.totalPrice;
+
 				var receipt = orderResult.receipt; 
 
 				expect(costOfNoodles).to.be.equal(3.5);
