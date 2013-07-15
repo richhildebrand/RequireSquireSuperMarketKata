@@ -3,6 +3,12 @@ function(PriceFormatter, ProductList) {
 	'use strict';
 
 	var ItemBuyer = {
+			
+		//TODO: do not pass in orderResult
+		buyItems: function(itemsToBuy, orderResult) {
+			for(var item in itemsToBuy)
+				buyItem(key, quantity)
+		}
 
 		buyBread: function(itemsToBuy, orderResult) {
 			return this.buyItem(itemsToBuy, orderResult, 'loafsOfBread');
