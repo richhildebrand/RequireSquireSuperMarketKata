@@ -11,7 +11,7 @@ function() {
 
 		formatPrice: function(price) {
 			price = '$' + price;
-			return this._needsZero(price) ? price + '0' : price;
+			return _needsZero(price) ? price + '0' : price;
 		},
 	}
 	return PriceFormatter;

@@ -8,9 +8,10 @@ function(PriceFormatter, ProductList) {
 			
 		//TODO: do not pass in orderResult
 		buyItems: function(itemsToBuy, orderResult) {
-			for(var item in itemsToBuy)
-				buyItem(key, quantity)
-		}
+			for(var index in itemsToBuy) {
+				debugger;
+			}
+		},
 
 		buyBread: function(itemsToBuy, orderResult) {
 			return this.buyItem(itemsToBuy, orderResult, 'loafsOfBread');

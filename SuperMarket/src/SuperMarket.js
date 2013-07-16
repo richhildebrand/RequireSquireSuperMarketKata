@@ -18,7 +18,5 @@ function(ItemBuyer, PriceFormatter) {
 		return orderResult;
 	};
 
-	return {
-		SuperMarket : SuperMarket
-	};
+	return SuperMarket;
 });
