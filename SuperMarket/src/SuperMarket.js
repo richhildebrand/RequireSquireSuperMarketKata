@@ -7,11 +7,7 @@ function(ItemBuyer, PriceFormatter) {
 
 
 	var SuperMarket = function(itemsToBuy) {
-		var orderResult = { totalPrice: 0, receipt: ""};
-
-		orderResult = ItemBuyer.buyBread(itemsToBuy, orderResult);
-		orderResult = ItemBuyer.buyNoodles(itemsToBuy, orderResult); 
-		orderResult = ItemBuyer.buySoup(itemsToBuy, orderResult);
+		var orderResult =ItemBuyer.buyItems(itemsToBuy, orderResult);
 
 		orderResult.totalPrice = (_priceFormatter.formatPrice(orderResult.totalPrice));
 

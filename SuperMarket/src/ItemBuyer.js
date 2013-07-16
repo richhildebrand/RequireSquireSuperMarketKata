@@ -7,10 +7,12 @@ function(PriceFormatter, ProductList) {
 	var ItemBuyer = {
 			
 		//TODO: do not pass in orderResult
-		buyItems: function(itemsToBuy, orderResult) {
-			for(var index in itemsToBuy) {
-				debugger;
-			}
+		buyItems: function(itemsToBuy) {
+			var orderResult = { totalPrice: 0, receipt: ""};
+			orderResult = this.buyBread(itemsToBuy, orderResult);
+			orderResult = this.buyNoodles(itemsToBuy, orderResult);
+			orderResult = this.buySoup(itemsToBuy, orderResult);
+			return orderResult;
 		},
 
 		buyBread: function(itemsToBuy, orderResult) {
