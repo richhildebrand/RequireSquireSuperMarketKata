@@ -24,7 +24,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 1 for two noodles', function() {
 				_order['noodles'] = 2;
 
-				var orderResult = _itemBuyer.buyNoodles(_order, _orderResult);
+				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'noodles');
 				var costOfNoodles = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
@@ -35,7 +35,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 3.50 for seven noodles', function() {
 				_order['noodles'] = 7;
 
-				var orderResult = _itemBuyer.buyNoodles(_order, _orderResult);
+				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'noodles');
 				var costOfNoodles = orderResult.totalPrice;
 
 				var receipt = orderResult.receipt; 

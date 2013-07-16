@@ -23,7 +23,7 @@ define(['Squire'], function(Squire) {
 			it('should charge me 4 for two cans of soup', function() {
 				_order['cansOfSoup'] = 2;
 
-				var orderResult = _itemBuyer.buySoup(_order, _orderResult);
+				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'cansOfSoup');
 				var costOfSoup = orderResult.totalPrice;
 				var receipt = orderResult.receipt
 
