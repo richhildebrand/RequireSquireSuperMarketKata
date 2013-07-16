@@ -8,21 +8,20 @@ function(PriceFormatter, ProductList) {
 			var me = this;
 			var orderResult = { totalPrice: 0, receipt: ""};
 
-			Object.keys(itemsToBuy).forEach(function (key) {
-			   orderResult = me.buyItem(itemsToBuy, orderResult, key);
+			Object.keys(itemsToBuy).forEach(function (itemName) {
+			   var itemQuantity = itemsToBuy[itemName];
+			   orderResult = me.buyItem(itemName, itemQuantity, orderResult);
 			});
 
 			orderResult.totalPrice = (PriceFormatter.formatPrice(orderResult.totalPrice));
 			return orderResult;
 		},
 
-		buyItem: function(itemsToBuy, orderResult, itemToBuy) {
-			var quantity = itemsToBuy[itemToBuy];
+		buyItem: function(itemToBuy, quantityToBuy, orderResult) {
 			var itemPrice = ProductList.getProducts()[itemToBuy];
-
-			var costOfItem = (quantity) ? quantity * itemPrice : 0;
-			orderResult.totalPrice += costOfItem 
-			orderResult.receipt += (costOfItem) ? itemToBuy + ': ' + PriceFormatter.formatPrice(costOfItem) : "";
+			var totalItemCost = quantityToBuy * itemPrice; 
+			orderResult.totalPrice += totalItemCost;
+			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
 			return orderResult;
 		}
 	}

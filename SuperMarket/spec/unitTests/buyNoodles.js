@@ -1,4 +1,5 @@
-define(['Squire'], function(Squire) {
+define(['Squire', 'ProductList'], 
+function(Squire,   ProductList) {
 	describe('Unit Test - Buying Noodles', function() {
 	'use strict';
 
@@ -12,6 +13,7 @@ define(['Squire'], function(Squire) {
 			_orderResult = { totalPrice: 0, receipt: "" };
 
 			testContext.injector = new Squire();
+			testContext.injector.mock("ProductList", ProductList);
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
 				testContext.ItemBuyer = ItemBuyer;
@@ -20,28 +22,51 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When noodles cost 0.5 per batch, buyItem', function() {
-			it('should charge me 1 for two noodles', function() {
-				_order['noodles'] = 2;
+		afterEach(function () {
+			try { ProductList.getProducts.restore(); } 
+		    catch(exception) {}
+		});
 
-				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'noodles');
+		describe('When noodles cost 1.5 per batch, buyItem', function() {
+			it('should charge me 4.5 for three noodles', function() {
+				var itemToBuy = 'noodles';
+				var quantityToBuy = 3;
+
+				var fakeProductsList = [];
+				fakeProductsList['noodles'] = 1.5
+				
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfNoodles = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfNoodles).to.be.equal(1);
-				expect(receipt).to.be.equal('noodles: $1');
+				expect(costOfNoodles).to.be.equal(4.5);
+				expect(receipt).to.be.equal('noodles: $4.50');
+
+				
 			});
 
-			it('should charge me 3.50 for seven noodles', function() {
-				_order['noodles'] = 7;
+			
+		});
 
-				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'noodles');
+		describe('When noodles cost 5 per batch, buyItem', function() {
+			it('should charge me 50 for ten noodles', function() {
+				var itemToBuy = 'noodles';
+				var quantityToBuy = 10;
+
+				var fakeProductsList = [];
+				fakeProductsList['noodles'] = 5;
+
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfNoodles = orderResult.totalPrice;
 
 				var receipt = orderResult.receipt; 
 
-				expect(costOfNoodles).to.be.equal(3.5);
-				expect(receipt).to.be.equal('noodles: $3.50');
+				expect(costOfNoodles).to.be.equal(50);
+				expect(receipt).to.be.equal('noodles: $50');
 			});
 		});
 	});

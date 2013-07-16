@@ -19,16 +19,16 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When soup costs 2 per can, buy item', function() {
-			it('should charge me 4 for two cans of soup', function() {
+		describe('When soup costs 1.75 per can, buy item', function() {
+			it('should charge me 3.50 for two cans of soup', function() {
 				_order['cansOfSoup'] = 2;
 
 				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'cansOfSoup');
 				var costOfSoup = orderResult.totalPrice;
 				var receipt = orderResult.receipt
 
-				expect(costOfSoup).to.be.equal(4);
-				expect(receipt).to.be.equal('cansOfSoup: $4');
+				expect(costOfSoup).to.be.equal(3.5);
+				expect(receipt).to.be.equal('cansOfSoup: $3.50');
 			});
 		});
 

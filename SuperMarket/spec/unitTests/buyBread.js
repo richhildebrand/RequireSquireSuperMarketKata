@@ -11,7 +11,18 @@ define(['Squire'], function(Squire) {
 			_order = {};
 			_orderResult = { totalPrice: 0, receipt: "" };
 
+			var fakeProductList = { 
+				getProducts: function() { 
+					var productsList = [];
+					productsList['loafsOfBread'] = 3;
+					return productsList;
+				}
+			};
+			
 			testContext.injector = new Squire();
+
+			// method one - inject a fake via require/squire
+			testContext.injector.mock("ProductList", fakeProductList);
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
 				testContext.ItemBuyer = ItemBuyer;
@@ -20,27 +31,29 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When bread costs 1 per loaf, buyItem', function() {
-			it('should charge me 5 for five loafs of bread', function() {
-				_order['loafsOfBread'] = 5;
-				
-				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'loafsOfBread');
+		describe('When bread costs 3 per loaf, buyItem', function() {
+			it('should charge me 15 for five loafs of bread', function() {
+				var itemToBuy = 'loafsOfBread';
+				var quantityToBuy = 5;
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfBread).to.be.equal(5);
-				expect(receipt).to.be.equal('loafsOfBread: $5');
+				expect(costOfBread).to.be.equal(15);
+				expect(receipt).to.be.equal('loafsOfBread: $15');
 			});
 
-			it('should charge me 10 for ten loafs of bread', function() {
-				_order['loafsOfBread'] = 10;
+			it('should charge me 30 for ten loafs of bread', function() {
+				var itemToBuy = 'loafsOfBread';
+				var quantityToBuy = 10;
 
-				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'loafsOfBread');
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfBread).to.be.equal(10);
-				expect(receipt).to.be.equal('loafsOfBread: $10');
+				expect(costOfBread).to.be.equal(30);
+				expect(receipt).to.be.equal('loafsOfBread: $30');
 			});
 		});
 
