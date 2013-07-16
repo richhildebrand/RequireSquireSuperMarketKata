@@ -22,6 +22,7 @@ define(['Squire'], function(Squire) {
 			testContext.injector = new Squire();
 
 			// method one - inject a fake via require/squire
+			// method one - inject a fake via require/squire
 			testContext.injector.mock("ProductList", fakeProductList);
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {

@@ -35,6 +35,7 @@ function(Squire,   ProductList) {
 				var fakeProductsList = [];
 				fakeProductsList['noodles'] = 1.5
 				
+				// method two - stub function with sinon
 				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
@@ -58,6 +59,7 @@ function(Squire,   ProductList) {
 				var fakeProductsList = [];
 				fakeProductsList['noodles'] = 5;
 
+				// method two - stub function with sinon
 				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);

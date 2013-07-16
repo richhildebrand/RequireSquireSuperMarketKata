@@ -17,6 +17,7 @@ function(PriceFormatter, ProductList) {
 			return orderResult;
 		},
 
+		// Possible refactor, remove side effect (do not pass in orderResult)
 		buyItem: function(itemToBuy, quantityToBuy, orderResult) {
 			var itemPrice = ProductList.getProducts()[itemToBuy];
 			var totalItemCost = quantityToBuy * itemPrice; 

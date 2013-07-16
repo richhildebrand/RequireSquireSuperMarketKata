@@ -21,9 +21,13 @@ define(['Squire'], function(Squire) {
 
 		describe('When soup costs 1.75 per can, buy item', function() {
 			it('should charge me 3.50 for two cans of soup', function() {
-				_order['cansOfSoup'] = 2;
+				var itemToBuy = 'cansOfSoup';
+				var quantityToBuy = 2;
 
-				var orderResult = _itemBuyer.buyItem(_order, _orderResult, 'cansOfSoup');
+				// to fix this pick your favorite mocking method I used
+				// in buyBread or buyNoodles. Don't change the price in ProductList =D
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, 'cansOfSoup');
 				var costOfSoup = orderResult.totalPrice;
 				var receipt = orderResult.receipt
 
