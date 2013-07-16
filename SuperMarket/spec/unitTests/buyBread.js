@@ -1,5 +1,5 @@
 define(['Squire'], function(Squire) {
-	describe('Unit Test - buyBread function', function() {
+	describe('Unit Test - Buying Bread', function() {
 	'use strict';
 
 		var testContext = {};
@@ -20,7 +20,7 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
-		describe('When bread costs 1 per loaf, buyBread', function() {
+		describe('When bread costs 1 per loaf, buyItem', function() {
 			it('should charge me 5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
 				
