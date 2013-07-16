@@ -8,7 +8,7 @@ define(['Squire'], function(Squire) {
 		var _orderResult;
 
 		beforeEach(function(done) {
-			_order = [];
+			_order = {};
 			_orderResult = { totalPrice: 0, receipt: "" };
 
 			testContext.injector = new Squire();

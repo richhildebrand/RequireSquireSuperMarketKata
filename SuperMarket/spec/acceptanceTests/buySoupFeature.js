@@ -7,7 +7,7 @@ define(['Squire'], function(Squire) {
 		var _order;
 
 		beforeEach(function(done) {
-			_order = [];
+			_order = {};
 
 			testContext.injector = new Squire();
 

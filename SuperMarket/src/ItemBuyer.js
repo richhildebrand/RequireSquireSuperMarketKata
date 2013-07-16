@@ -8,10 +8,12 @@ function(PriceFormatter, ProductList) {
 			
 		//TODO: do not pass in orderResult
 		buyItems: function(itemsToBuy) {
+			var me = this;
 			var orderResult = { totalPrice: 0, receipt: ""};
-			orderResult = this.buyBread(itemsToBuy, orderResult);
-			orderResult = this.buyNoodles(itemsToBuy, orderResult);
-			orderResult = this.buySoup(itemsToBuy, orderResult);
+
+			Object.keys(itemsToBuy).forEach(function (key) {
+			   orderResult = me.buyItem(itemsToBuy, orderResult, key);
+			});
 
 			orderResult.totalPrice = (_priceFormatter.formatPrice(orderResult.totalPrice));
 			return orderResult;

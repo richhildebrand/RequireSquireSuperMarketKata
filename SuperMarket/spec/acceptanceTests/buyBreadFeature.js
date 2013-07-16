@@ -8,7 +8,7 @@ define(['Squire'], function(Squire) {
 		var _orderResult;
 
 		beforeEach(function(done) {
-			_order = [];
+			_order = {};
 			_orderResult = { totalPrice: 0, receipt: "" };
 
 			testContext.injector = new Squire();
@@ -23,7 +23,7 @@ define(['Squire'], function(Squire) {
 		describe('When bread costs $1 per loaf, the super market', function() {
 			it('should charge me $5 for five loafs of bread', function() {
 				_order['loafsOfBread'] = 5;
-				
+
 				var orderResult = _superMarket(_order, _orderResult)
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;

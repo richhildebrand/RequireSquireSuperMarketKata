@@ -8,7 +8,7 @@ function(Squire) {
 		var testContext = {};
 
 		beforeEach(function(done) {
-			_order = [];
+			_order = {};
 
 			testContext.injector = new Squire();
 
