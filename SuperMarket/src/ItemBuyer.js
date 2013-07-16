@@ -12,6 +12,8 @@ function(PriceFormatter, ProductList) {
 			orderResult = this.buyBread(itemsToBuy, orderResult);
 			orderResult = this.buyNoodles(itemsToBuy, orderResult);
 			orderResult = this.buySoup(itemsToBuy, orderResult);
+
+			orderResult.totalPrice = (_priceFormatter.formatPrice(orderResult.totalPrice));
 			return orderResult;
 		},
 

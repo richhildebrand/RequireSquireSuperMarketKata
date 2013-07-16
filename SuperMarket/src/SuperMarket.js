@@ -1,16 +1,9 @@
-define(['ItemBuyer', 'PriceFormatter'],
-function(ItemBuyer, PriceFormatter) {
+define(['ItemBuyer'],
+function(ItemBuyer) {
 	'use strict';
 
-	var _itemBuyer = ItemBuyer;
-	var _priceFormatter = PriceFormatter;
-
-
 	var SuperMarket = function(itemsToBuy) {
-		var orderResult =ItemBuyer.buyItems(itemsToBuy, orderResult);
-
-		orderResult.totalPrice = (_priceFormatter.formatPrice(orderResult.totalPrice));
-
+		var orderResult = ItemBuyer.buyItems(itemsToBuy, orderResult);
 		return orderResult;
 	};
 
