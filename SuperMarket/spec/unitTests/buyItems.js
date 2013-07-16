@@ -20,6 +20,7 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
+
 		describe('When bread costs 1 per loaf, noodles cost .5, and soup costs 2 per can, buyItems', function() {
 			it('should charge me 5 for 2 loafs of bread, 2 noodles, and 1 can of soup', function() {
 				_order['loafsOfBread'] = 2;
@@ -31,7 +32,9 @@ define(['Squire'], function(Squire) {
 				var receipt = orderResult.receipt;
 
 				expect(costOfOrder).to.be.equal('$5');
-				expect(receipt).to.be.equal('loafsOfBread: $2, noodles: $1, cansOfSoup: $2');
+				expect(receipt).to.be.contain('loafsOfBread: $2');
+				expect(receipt).to.be.contain('noodles: $1');
+				expect(receipt).to.be.contain('cansOfSoup: $2');
 			});
 		});
 
