@@ -21,8 +21,9 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 			});
 		});
 
-		afterEach(function () { 
-				ProductList.getProducts.restore();
+		afterEach(function () {
+			try { ProductList.getProducts.restore(); } 
+		    catch(exception) {}
 		});
 
 		describe('When soup costs 1.75 per can, buy item', function() {

@@ -1,4 +1,4 @@
-define(['Squire'], function(Squire) {
+define(['Squire', 'ProductList'], function(Squire, ProductList) {
 	describe('Unit Test - Buying Bread', function() {
 	'use strict';
 
@@ -10,20 +10,9 @@ define(['Squire'], function(Squire) {
 		beforeEach(function(done) {
 			_order = {};
 			_orderResult = { totalPrice: 0, receipt: "" };
-
-			var fakeProductList = { 
-				getProducts: function() { 
-					var productsList = [];
-					productsList['loafsOfBread'] = 3;
-					return productsList;
-				}
-			};
 			
 			testContext.injector = new Squire();
-
-			// method one - inject a fake via require/squire
-			// method one - inject a fake via require/squire
-			testContext.injector.mock("ProductList", fakeProductList);
+			testContext.injector.mock("ProductList", ProductList);
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
 				testContext.ItemBuyer = ItemBuyer;
@@ -32,10 +21,20 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
+		afterEach(function () {
+			try { ProductList.getProducts.restore(); } 
+		    catch(exception) {}
+		});
+
 		describe('When bread costs 3 per loaf, buyItem', function() {
 			it('should charge me 15 for five loafs of bread', function() {
 				var itemToBuy = 'loafsOfBread';
 				var quantityToBuy = 5;
+
+				var fakeProductsList = [];
+				fakeProductsList['loafsOfBread'] = 3;
+
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfBread = orderResult.totalPrice;
@@ -49,6 +48,11 @@ define(['Squire'], function(Squire) {
 				var itemToBuy = 'loafsOfBread';
 				var quantityToBuy = 10;
 
+				var fakeProductsList = [];
+				fakeProductsList['loafsOfBread'] = 3;
+
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
+				
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfBread = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
