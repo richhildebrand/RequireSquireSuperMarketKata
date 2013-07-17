@@ -1,4 +1,4 @@
-define(['Squire'], function(Squire) {
+define(['Squire', 'ProductList'], function(Squire, ProductList) {
 	describe('Unit Test - Buying soup', function() {
 	'use strict';
 
@@ -10,7 +10,9 @@ define(['Squire'], function(Squire) {
 		beforeEach(function(done) {
 			_order = {};
 			_orderResult = { totalPrice: 0, receipt: "" };
+			
 			testContext.injector = new Squire();
+			testContext.injector.mock("ProductList", ProductList);
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
 				testContext.ItemBuyer = ItemBuyer;
@@ -19,19 +21,25 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
+		afterEach(function () { 
+				ProductList.getProducts.restore();
+		});
+
 		describe('When soup costs 1.75 per can, buy item', function() {
 			it('should charge me 3.50 for two cans of soup', function() {
 				var itemToBuy = 'cansOfSoup';
 				var quantityToBuy = 2;
 
-				// to fix this pick your favorite mocking method I used
-				// in buyBread or buyNoodles. Don't change the price in ProductList =D
+				var fakeProductsList = [];
+				fakeProductsList['cansOfSoup'] = 1.75; //The 1.75 in this case represents the price of a can of soup.
 
-				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, 'cansOfSoup');
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
 				var costOfSoup = orderResult.totalPrice;
 				var receipt = orderResult.receipt
 
-				expect(costOfSoup).to.be.equal(3.5);
+				expect(costOfSoup).to.be.equal(3.50);
 				expect(receipt).to.be.equal('cansOfSoup: $3.50');
 			});
 		});
