@@ -1,4 +1,4 @@
-define(['Squire', 'ProductList'], function(Squire, ProductList) {
+define(['Squire'], function(Squire) {
 	describe('Unit Test - buyItems function', function() {
 	'use strict';
 
@@ -12,13 +12,17 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 			_orderResult = { totalPrice: 0, receipt: "" };
 
 			testContext.injector = new Squire();
-			testContext.injector.mock(ProductList, 'ProductList');
 
 			testContext.injector.require(['ItemBuyer'], function(ItemBuyer) {
 				testContext.ItemBuyer = ItemBuyer;
 				_itemBuyer = testContext.ItemBuyer;
 				done();
 			});
+		});
+
+		afterEach(function() {
+			try { _itemBuyer.buyItem.restore(); }
+			catch(expection) { }
 		});
 
 
@@ -28,15 +32,21 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				_order['noodles'] = 2;
 				_order['cansOfSoup'] = 1;
 
-				//I did this simple red so you have a chance to do another mock in the agreed upon way.
-				//Just make the mock use the correct values basically. Don't forget the after each! :)
-
 				//Also, I think we need to write some more acceptance tests. Another good use I'm finding with acceptance tests
 				//is that for a long project like this it would be useful to have tests in place for plently for
 				//future functionality, even if the individual test structure completely changes when we get around to it
 				//, it would still be nice to have the direction and idea we originally had.
 				//Thoughts?
-				
+
+				//I agree! I got kinda lost in refactoring land.
+
+				// Speaking of, this fix possible because of side effect coding. =)
+				// If you want to try to refactor that out to imporove this test,
+				// I'll try and deal with the new mocking requirements.
+				_orderResult.totalPrice = 10;
+				_orderResult.receipt="loafsOfBread: $4 noodles: $2 cansOfSoup: $4";
+				sinon.stub(_itemBuyer, "buyItem").returns(_orderResult)
+
 				var orderResult = _itemBuyer.buyItems(_order);
 				var costOfOrder = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
