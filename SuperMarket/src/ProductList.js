@@ -5,6 +5,7 @@ define([], function() {
 		productsList['loafsOfBread'] = 1;
 		productsList['cansOfSoup'] = 2;
 		productsList['noodles'] = .5;
+		productsList['apples'] = 2;
 		return productsList;
 	};
 

@@ -22,7 +22,7 @@ define(['Squire'], function(Squire) {
 
 		describe('When apples costs $2 per pound, the super market', function() {
 			it('should charge me $10 for five pounds of apples', function() {
-				_order['Apples'] = 5;
+				_order['apples'] = 5;
 
 				var orderResult = _superMarket(_order, _orderResult);
 				var costOfApples = orderResult.totalPrice;
@@ -30,7 +30,7 @@ define(['Squire'], function(Squire) {
 
 				expect(costOfApples).to.be.equal("$10");
 				//feel free to adjust this message to something you like better;
-				expect(receipt).to.contain("Apples $2/pound: $10");
+				expect(receipt).to.contain("apples $2/pound: $10");
 			});
 
 			it('should charge me .50 for .25 pounds of apples', function() {
@@ -42,7 +42,7 @@ define(['Squire'], function(Squire) {
 
 				expect(costOfApples).to.be.equal("$.50");
 				//feel free to adjust this message to something you like better;
-				expect(receipt).to.contain("Apples $2/pound: $.50");
+				expect(receipt).to.contain("apples $2/pound: $.50");
 			});
 
 			it('should charge me .67 for .33333 pounds of apples', function() {
@@ -54,7 +54,7 @@ define(['Squire'], function(Squire) {
 
 				expect(costOfApples).to.be.equal("$.67");
 				//feel free to adjust this message to something you like better;
-				expect(receipt).to.contain("Apples $2/pound: $.67");
+				expect(receipt).to.contain("apples $2/pound: $.67");
 			});
 		});
 

@@ -22,6 +22,10 @@ function(PriceFormatter, ProductList) {
 			var itemPrice = ProductList.getProducts()[itemToBuy];
 			var totalItemCost = quantityToBuy * itemPrice; 
 			orderResult.totalPrice += totalItemCost;
+			if (itemToBuy['apples'])
+			{
+				return orderResult.receipt += itemToBuy + ' $2/pound: ' + PriceFormatter.formatPrice(totalItemCost);
+			}
 			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
 			return orderResult;
 		}
