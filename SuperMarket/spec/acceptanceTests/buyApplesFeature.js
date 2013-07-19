@@ -20,6 +20,11 @@ define(['Squire'], function(Squire) {
 			});
 		});
 
+		//I'm going to leave this first test red for you to pass because I could not figure out what was going on! :)
+		//I did make it so buyItem now takes in a weight parameter. Not sure if that is the way you want it to go but seemed ok to me!
+		//Also for you refactor you may want to mock out buyApples :)
+		//Chris took a look at how we were mocking and said "I'm going to have to look into this, it looks like one of the better ways to mock in javascript"
+		//I almost shit a brick because he was in such approval! SO GOOD JOB TO YOU SIR! WELL DONE!
 		describe('When apples costs $2 per pound, the super market', function() {
 			it('should charge me $10 for five pounds of apples', function() {
 				_order['apples'] = 5;
@@ -29,7 +34,7 @@ define(['Squire'], function(Squire) {
 				var receipt = orderResult.receipt;
 
 				expect(costOfApples).to.be.equal("$10");
-				//feel free to adjust this message to something you like better;
+
 				expect(receipt).to.contain("apples $2/pound: $10");
 			});
 
@@ -41,7 +46,7 @@ define(['Squire'], function(Squire) {
 				var receipt = orderResult.receipt;
 
 				expect(costOfApples).to.be.equal("$.50");
-				//feel free to adjust this message to something you like better;
+
 				expect(receipt).to.contain("apples $2/pound: $.50");
 			});
 
@@ -53,7 +58,7 @@ define(['Squire'], function(Squire) {
 				var receipt = orderResult.receipt;
 
 				expect(costOfApples).to.be.equal("$.67");
-				//feel free to adjust this message to something you like better;
+
 				expect(receipt).to.contain("apples $2/pound: $.67");
 			});
 		});
