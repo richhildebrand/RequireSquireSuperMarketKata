@@ -1,5 +1,5 @@
 define(['Squire'], function(Squire) {
-	describe('Unit Test - Buying Apples', function() {
+	describe('Unit Test - Buying apples', function() {
 	'use strict';
 
 		var testContext = {};

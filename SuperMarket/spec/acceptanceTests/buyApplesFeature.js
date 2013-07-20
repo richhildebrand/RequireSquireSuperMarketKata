@@ -22,7 +22,7 @@ define(['Squire'], function(Squire) {
 
 		//I'm going to leave this first test red for you to pass because I could not figure out what was going on! :)
 		//I did make it so buyItem now takes in a weight parameter. Not sure if that is the way you want it to go but seemed ok to me!
-		//Also for you refactor you may want to mock out buyApples :)
+		//Also for you refactor you may want to mock out buyapples :)
 		//Chris took a look at how we were mocking and said "I'm going to have to look into this, it looks like one of the better ways to mock in javascript"
 		//I almost shit a brick because he was in such approval! SO GOOD JOB TO YOU SIR! WELL DONE!
 		describe('When apples costs $2 per pound, the super market', function() {
@@ -30,34 +30,34 @@ define(['Squire'], function(Squire) {
 				_order['apples'] = 5;
 
 				var orderResult = _superMarket(_order, _orderResult);
-				var costOfApples = orderResult.totalPrice;
+				var costOfapples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfApples).to.be.equal("$10");
+				expect(costOfapples).to.be.equal("$10");
 
 				expect(receipt).to.contain("apples $2/pound: $10");
 			});
 
 			it('should charge me .50 for .25 pounds of apples', function() {
-				_order['Apples'] = .25;
-
+				_order['apples'] = .25;
+				debugger;
 				var orderResult = _superMarket(_order, _orderResult);
-				var costOfApples = orderResult.totalPrice;
+				var costOfapples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfApples).to.be.equal("$.50");
+				expect(costOfapples).to.be.equal("$0.50");
 
-				expect(receipt).to.contain("apples $2/pound: $.50");
+				expect(receipt).to.contain("apples $2/pound: $0.50");
 			});
 
 			it('should charge me .67 for .33333 pounds of apples', function() {
-				_order['Apples'];
+				_order['apples'];
 
 				var orderResult = _superMarket(_order, _orderResult);
-				var costOfApples = orderResult.totalPrice;
+				var costOfapples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfApples).to.be.equal("$.67");
+				expect(costOfapples).to.be.equal("$.67");
 
 				expect(receipt).to.contain("apples $2/pound: $.67");
 			});
