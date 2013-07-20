@@ -31,14 +31,32 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				
 				var fakeProductList = [];
 				fakeProductList['apples'] = 4;
-				sinon.stub(ProductList, 'getProducts').returns(fakeProductList)
+				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
-				var costOfOrder = orderResult.totalPrice;
+				var costOfApples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfOrder).to.be.equal(8);
+				expect(costOfApples).to.be.equal(8);
 				expect(receipt).to.be.contain('apples $4/pound: $8');
+			});
+		});
+
+		describe('When apples cost 1 per pound, buyItem', function() { 
+			it('should charge me .33 for .33333 pounds of apples', function() {
+				var itemToBuy = 'apples';
+				var quantityToBuy = .33333;
+				
+				var fakeProductList = [];
+				fakeProductList['apples'] = 1;
+				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
+				var costOfApples = orderResult.totalPrice;
+				var receipt = orderResult.receipt;
+
+				expect(costOfApples).to.be.equal(".33");
+				expect(receipt).to.contain("apples $1/pound: $.33");
 			});
 		});
 	});
