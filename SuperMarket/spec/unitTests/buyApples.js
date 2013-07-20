@@ -34,7 +34,7 @@ define(['Squire'], function(Squire) {
 				
 				_orderResult.totalPrice = 4;
 				_orderResult.receipt="apples $2/pound: $4";
-				sinon.stub(_itemBuyer, "buyItem").returns(_orderResult)
+				//sinon.stub(_itemBuyer, "buyItem").returns(_orderResult)
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, weight);
 				var costOfOrder = orderResult.totalPrice;
