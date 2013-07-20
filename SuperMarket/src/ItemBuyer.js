@@ -18,19 +18,16 @@ function(PriceFormatter, ProductList) {
 		},
 
 		// Possible refactor, remove side effect (do not pass in orderResult)
-		buyItem: function(itemToBuy, quantityToBuy, orderResult, weight) {
+		buyItem: function(itemToBuy, quantityToBuy, orderResult) {
 			var itemPrice = ProductList.getProducts()[itemToBuy];
-			var totalItemCost;
-			if (ProductList.getProducts()['apples'])
-			{
-				totalItemCost = weight * itemPrice;
-			}
-			totalItemCost = quantityToBuy * itemPrice;
+			var totalItemCost = quantityToBuy * itemPrice;
 			orderResult.totalPrice += totalItemCost;
-			if (itemToBuy['apples'])
+
+			if (itemToBuy === 'apples')
 			{
-				return orderResult.receipt += itemToBuy + ' $2/pound: ' + PriceFormatter.formatPrice(totalItemCost);
+				orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost);
 			}
+
 			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
 			return orderResult;
 		}
