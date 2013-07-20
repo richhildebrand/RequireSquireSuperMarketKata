@@ -51,7 +51,7 @@ define(['Squire'], function(Squire) {
 			});
 
 			it('should charge me .67 for .33333 pounds of apples', function() {
-				_order['apples'];
+				_order['apples'] = .33333;
 
 				var orderResult = _superMarket(_order, _orderResult);
 				var costOfapples = orderResult.totalPrice;
