@@ -55,8 +55,8 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var costOfApples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfApples).to.be.equal(".33");
-				expect(receipt).to.contain("apples $1/pound: $.33");
+				expect(costOfApples).to.be.equal(0.33);
+				expect(receipt).to.contain("apples $1/pound: $0.33");
 			});
 		});
 	});

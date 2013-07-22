@@ -20,8 +20,8 @@ function(PriceFormatter, ProductList) {
 		// Possible refactor, remove side effect (do not pass in orderResult)
 		buyItem: function(itemToBuy, quantityToBuy, orderResult) {
 			var itemPrice = ProductList.getProducts()[itemToBuy];
-			var totalItemCost = quantityToBuy * itemPrice;
-			orderResult.totalPrice += totalItemCost;
+			var totalItemCost = Math.floor(quantityToBuy * itemPrice * 100);
+			orderResult.totalPrice += totalItemCost / 100;
 
 			if (itemToBuy === 'apples')
 			{
