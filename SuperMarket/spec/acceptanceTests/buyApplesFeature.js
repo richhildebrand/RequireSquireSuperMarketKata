@@ -47,6 +47,8 @@ define(['Squire'], function(Squire) {
 
 			//Idk why this throws the extra zero on the end and the unit test doesn't...
 			//I'm assuming it has to do with the '_needsZero' function
+
+			//ha! Good call. I was scratching my head till I saw your hint!
 			it('should charge me .67 for .33333 pounds of apples', function() {
 				_order['apples'] = .33333;
 
