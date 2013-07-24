@@ -41,8 +41,15 @@ define(['Squire'], function(Squire) {
 
 				expect(formattedPrice).to.be.equal('$3.50');
 			});
-
 		});
 
+		describe('When a price contains a decimal point ' +
+				 'and has two points of percision', function() {
+			it('should not append a zero to the end of the price', function () {
+				var formattedPrice = _priceFormatter.formatPrice(7.87);
+				
+				expect(formattedPrice).to.be.equal('$7.87');
+			});
+		});
 	});
 });
