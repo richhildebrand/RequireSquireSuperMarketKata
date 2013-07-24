@@ -22,9 +22,30 @@ define(['Squire'], function(Squire) {
 			it('should charge me $4 for two cans of soup', function() {
 				_order['cansOfSoup'] = 2;
 
-				var costOfSoup = _superMarket(_order).totalPrice;
+				var result = _superMarket(_order);
+				var costOfSoup = result.totalPrice;
+				var receipt = result.receipt;
 
 				expect(costOfSoup).to.be.equal("$4");
+				expect(receipt).to.be.contain("cansOfSoup: $4");
+			})
+		});
+
+		//Not sure how I want to indent / break this
+		//but I saw the and example during css testing today
+
+		//also, it feels strange that our receipt doesn't have a quantity? Did I miss that feature somewhere?
+		describe('When soup costs $2 per can ' +
+				 'and buying four soups gives you one for free, the super market', function() {
+			it('should charge me $6 for 4 cans of soup', function() {
+				_order['cansOfSoup'] = 4;
+
+				var result = _superMarket(_order);
+				var costOfSoup = result.totalPrice;
+				var receipt = result.receipt;
+
+				expect(costOfSoup).to.be.equal("$6");
+				expect(receipt).to.be.contain("cansOfSoup: $6");
 			})
 		});
 	});
