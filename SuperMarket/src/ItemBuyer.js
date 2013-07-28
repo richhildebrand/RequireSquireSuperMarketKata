@@ -25,10 +25,21 @@ function(PriceFormatter, ProductList) {
 
 			if (itemToBuy === 'apples')
 			{
-				orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost);
+				if (quantityToBuy < 4)
+				{
+					orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost);
+				}
+				else
+				{
+					orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost - 1);
+					orderResult.totalPrice -= 1;
+				}
+				
 			}
-
-			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
+			else 
+			{
+				orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
+			}
 			return orderResult;
 		}
 	}
