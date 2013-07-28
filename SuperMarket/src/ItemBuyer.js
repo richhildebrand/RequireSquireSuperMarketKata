@@ -36,10 +36,8 @@ function(PriceFormatter, ProductList) {
 				}
 				
 			}
-			else 
-			{
-				orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
-			}
+			
+			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
 			return orderResult;
 		}
 	}

@@ -60,10 +60,6 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 			});
 		});
 
-		// My thinking is that this feature should be available to all items
-		// even though only soup is using it atm.
-
-		// Also, I ment to write this for soup, but the above justification sounded good didn't it?
 		describe('When apples cost 1 per pound' +
 				 'and you get one free when you buy four pounds', function() { 
 			it('should charge me $3 for 4 pounds of apples', function() {

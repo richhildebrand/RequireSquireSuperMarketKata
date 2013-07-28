@@ -31,10 +31,6 @@ define(['Squire'], function(Squire) {
 			})
 		});
 
-		//Not sure how I want to indent / break this
-		//but I saw the and example during css testing today
-
-		//also, it feels strange that our receipt doesn't have a quantity? Did I miss that feature somewhere?
 		describe('When soup costs $2 per can ' +
 				 'and buying four soups gives you one for free, the super market', function() {
 			it('should charge me $6 for 4 cans of soup', function() {
