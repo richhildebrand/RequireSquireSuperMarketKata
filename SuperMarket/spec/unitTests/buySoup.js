@@ -63,7 +63,23 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				expect(costOfSoup).to.be.equal(9);
 				expect(receipt).to.be.equal('cansOfSoup: $9');
 			});
-		});
 
+			it('should charge me $21 for nine cans of soup', function() {
+				var itemToBuy = 'cansOfSoup';
+				var quantityToBuy = 9;
+
+				var fakeProductsList = [];
+				fakeProductsList['cansOfSoup'] = { price: 3, buyNgetOneFree: 4 };
+
+				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
+
+				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
+				var costOfSoup = orderResult.totalPrice;
+				var receipt = orderResult.receipt
+
+				expect(costOfSoup).to.be.equal(21);
+				expect(receipt).to.be.equal('cansOfSoup: $21');
+			});
+		});
 	});
 });
