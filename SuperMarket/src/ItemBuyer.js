@@ -19,7 +19,8 @@ function(PriceFormatter, ProductList) {
 
 		// Possible refactor, remove side effect (do not pass in orderResult)
 		buyItem: function(itemToBuy, quantityToBuy, orderResult) {
-			var itemPrice = ProductList.getProducts()[itemToBuy];
+			var item = ProductList.getProducts()[itemToBuy];
+			var itemPrice = item.price;
 			var totalItemCost = Math.round(quantityToBuy * itemPrice * 100) / 100;
 			orderResult.totalPrice += totalItemCost;
 

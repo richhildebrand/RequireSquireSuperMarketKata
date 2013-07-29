@@ -32,7 +32,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = 5;
 
 				var fakeProductsList = [];
-				fakeProductsList['loafsOfBread'] = 3;
+				fakeProductsList['loafsOfBread'] = { price: 3 };
 
 				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 
@@ -49,7 +49,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = 10;
 
 				var fakeProductsList = [];
-				fakeProductsList['loafsOfBread'] = 3;
+				fakeProductsList['loafsOfBread'] = { price: 3 };
 
 				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 				

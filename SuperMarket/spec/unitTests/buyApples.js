@@ -30,7 +30,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = 2;
 				
 				var fakeProductList = [];
-				fakeProductList['apples'] = 4;
+				fakeProductList['apples'] = { price: 4 };
 				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
@@ -48,7 +48,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = .33333;
 				
 				var fakeProductList = [];
-				fakeProductList['apples'] = 1;
+				fakeProductList['apples'] = { price: 1 };
 				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);
@@ -67,7 +67,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = 4;
 				
 				var fakeProductList = [];
-				fakeProductList['apples'] = 1;
+				fakeProductList['apples'] = { price: 1 };
 				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);

@@ -32,17 +32,6 @@ define(['Squire'], function(Squire) {
 				_order['noodles'] = 2;
 				_order['cansOfSoup'] = 1;
 
-				//Also, I think we need to write some more acceptance tests. Another good use I'm finding with acceptance tests
-				//is that for a long project like this it would be useful to have tests in place for plently for
-				//future functionality, even if the individual test structure completely changes when we get around to it
-				//, it would still be nice to have the direction and idea we originally had.
-				//Thoughts?
-
-				//I agree! I got kinda lost in refactoring land.
-
-				// Speaking of, this fix possible because of side effect coding. =)
-				// If you want to try to refactor that out to imporove this test,
-				// I'll try and deal with the new mocking requirements.
 				_orderResult.totalPrice = 10;
 				_orderResult.receipt="loafsOfBread: $4 noodles: $2 cansOfSoup: $4";
 				sinon.stub(_itemBuyer, "buyItem").returns(_orderResult)
