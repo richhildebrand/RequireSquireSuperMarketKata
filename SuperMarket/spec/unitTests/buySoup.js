@@ -49,10 +49,10 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 		describe('When soup costs 3 per can, buy item', function() {
 			it('should charge me 9 for four cans of soup', function() {
 				var itemToBuy = 'cansOfSoup';
-				var quantityToBuy = { price: 4 };
+				var quantityToBuy = 4;
 
 				var fakeProductsList = [];
-				fakeProductsList['cansOfSoup'] = { price:3 };
+				fakeProductsList['cansOfSoup'] = { price: 3, buyNgetOneFree: 4 };
 
 				sinon.stub(ProductList, "getProducts").returns(fakeProductsList);
 

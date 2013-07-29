@@ -67,7 +67,7 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 				var quantityToBuy = 4;
 				
 				var fakeProductList = [];
-				fakeProductList['apples'] = { price: 1 };
+				fakeProductList['apples'] = { price: 1, buyNgetOneFree: 4 };
 				sinon.stub(ProductList, 'getProducts').returns(fakeProductList);
 
 				var orderResult = _itemBuyer.buyItem(itemToBuy, quantityToBuy, _orderResult);

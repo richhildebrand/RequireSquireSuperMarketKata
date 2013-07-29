@@ -28,9 +28,8 @@ define(['Squire'], function(Squire) {
 				var costOfapples = orderResult.totalPrice;
 				var receipt = orderResult.receipt;
 
-				expect(costOfapples).to.be.equal("$9");
-
-				expect(receipt).to.contain("apples $2/pound: $9");
+				expect(costOfapples).to.be.equal("$10");
+				expect(receipt).to.contain("apples $2/pound: $10");
 			});
 
 			it('should charge me .50 for .25 pounds of apples', function() {
