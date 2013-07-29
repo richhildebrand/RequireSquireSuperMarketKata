@@ -2,6 +2,13 @@ define(['PriceFormatter', 'ProductList'],
 function(PriceFormatter, ProductList) {
 	'use strict';
 
+	var adjustPriceForDiscount = function(item, quantityToBuy, totalItemCost) {
+		if( item.buyNgetOneFree && quantityToBuy >= item.buyNgetOneFree) {
+			return totalItemCost - item.price;
+		}
+		return totalItemCost;
+	}
+
 	var ItemBuyer = {
 			
 		buyItems: function(itemsToBuy) {
@@ -22,21 +29,11 @@ function(PriceFormatter, ProductList) {
 			var item = ProductList.getProducts()[itemToBuy];
 			var itemPrice = item.price;
 			var totalItemCost = Math.round(quantityToBuy * itemPrice * 100) / 100;
+			var totalItemCost = adjustPriceForDiscount(item, quantityToBuy, totalItemCost);
 			orderResult.totalPrice += totalItemCost;
 
-			if (itemToBuy === 'apples')
-			{
-				if (item.buyNgetOneFree && quantityToBuy >= item.buyNgetOneFree)
-				{
-					orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost - itemPrice);
-					orderResult.totalPrice -= itemPrice;
-				}
-				else
-				{
-					orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost);
-
-				}
-				
+			if (itemToBuy === 'apples') {
+				orderResult.receipt += itemToBuy + ' $' + itemPrice + '/pound: ' + PriceFormatter.formatPrice(totalItemCost);
 			}
 			
 			orderResult.receipt += itemToBuy + ': ' + PriceFormatter.formatPrice(totalItemCost);
