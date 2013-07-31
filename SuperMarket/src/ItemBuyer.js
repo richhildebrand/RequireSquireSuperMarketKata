@@ -3,8 +3,9 @@ function(PriceFormatter, ProductList) {
 	'use strict';
 
 	var adjustPriceForDiscount = function(item, quantityToBuy, totalItemCost) {
-		if( item.buyNgetOneFree && quantityToBuy >= item.buyNgetOneFree) {
-			return totalItemCost - item.price;
+		var numberOfDiscounts = (quantityToBuy / item.buyNgetOneFree).toFixed(0);
+		if(item.buyNgetOneFree && quantityToBuy >= item.buyNgetOneFree) {
+			return totalItemCost - (item.price * numberOfDiscounts);
 		}
 		return totalItemCost;
 	}

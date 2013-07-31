@@ -45,7 +45,6 @@ define(['Squire', 'ProductList'], function(Squire, ProductList) {
 			});
 		});
 
-		//I agree. We can implement this for everything! First step is soup!
 		describe('When soup costs 3 per can, buy item', function() {
 			it('should charge me 9 for four cans of soup', function() {
 				var itemToBuy = 'cansOfSoup';
