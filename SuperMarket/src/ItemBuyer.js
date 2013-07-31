@@ -3,7 +3,7 @@ function(PriceFormatter, ProductList) {
 	'use strict';
 
 	var adjustPriceForDiscount = function(item, quantityToBuy, totalItemCost) {
-		var numberOfDiscounts = (quantityToBuy / item.buyNgetOneFree).toFixed(0);
+		var numberOfDiscounts = Math.floor(quantityToBuy / item.buyNgetOneFree);
 		if(item.buyNgetOneFree && quantityToBuy >= item.buyNgetOneFree) {
 			return totalItemCost - (item.price * numberOfDiscounts);
 		}
